@@ -601,6 +601,7 @@ namespace BattleBoats
                     player2.SetPlayerData(state.player2Data);
                     player2.notChosen = state.notChosen;
                     turnCount = state.turnCount;
+                    savepath = filepath;
                 }
                 catch
                 {
