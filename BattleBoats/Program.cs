@@ -5,11 +5,6 @@ namespace BattleBoats
 {
     internal class Program 
     {
-        //TODO:
-        // - game over logic - :D
-        // - sunken ship detection (FML) - :(
-        // - save and resume (its so over) - :D
-
         static void Main(string[] args)
         {
             //Creating instances of required classes.
