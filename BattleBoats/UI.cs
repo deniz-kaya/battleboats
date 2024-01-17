@@ -24,7 +24,7 @@ namespace BattleBoats
         {
             printer = new(foreground, background);
         }
-        private Renderer.Printer printer = new();
+        private Renderer printer = new();
 
         //Print a whole chunk of text, instructions.
         public void Instructions()
@@ -56,7 +56,15 @@ namespace BattleBoats
             Console.Clear();
             printer.WriteLine("Please input the filepath of the game: ");
             printer.Write("> ");
-            return Console.ReadLine();
+            string ans = Console.ReadLine();
+            while (ans == String.Empty || ans.Contains(' '))
+            {
+                printer.WriteLine("\nFilepath cannot contain spaces or be empty!", Renderer.FG.BrightRed);
+                printer.WriteLine("Input again: ");
+                printer.Write("> ");
+                ans = Console.ReadLine();
+            }
+            return ans;
         }
 
         //Display menu and return request made by the user.

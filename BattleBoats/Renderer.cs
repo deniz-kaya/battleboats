@@ -55,17 +55,15 @@ namespace BattleBoats
             BrightCyan = 106,
             BrightWhite = 107,
         }
-        public class Printer
-        {
-            //The values that FG.Constant and BG.Constant will take.
-            private FG DefaultForeground = FG.White;
-            private BG DefaultBackground = BG.Black;
+        //The values that FG.Constant and BG.Constant will take.
+        private FG DefaultForeground = FG.White;
+        private BG DefaultBackground = BG.Black;
 
-            //for sketching and printing all at once.
-            private string sketchPad;
+        //for sketching and printing all at once.
+        private string sketchPad;
 
-            //Constructor sets values for DefaultForeground and DefaultBackground.
-            public Printer(FG DefaultForeground = FG.White, BG DefaultBackground = BG.Black)
+        //Constructor sets values for DefaultForeground and DefaultBackground.
+        public Renderer(FG DefaultForeground = FG.White, BG DefaultBackground = BG.Black)
             {
                 Console.SetCursorPosition(0, 0);
                 SetDefaultColor(DefaultForeground, DefaultBackground);
@@ -74,16 +72,16 @@ namespace BattleBoats
                 sketchPad = String.Empty;
 
             }
-            
-            //Self explanatory.
-            public void SetDefaultColor(FG DefaultForeground = FG.White, BG DefaultBackround = BG.Black)
+        
+        //Self explanatory.
+        public void SetDefaultColor(FG DefaultForeground = FG.White, BG DefaultBackround = BG.Black)
             {
                 this.DefaultForeground = DefaultForeground;
                 this.DefaultBackground = DefaultBackround;
             }
 
-            //Prints the contents of the sketchPad string on the requested position.
-            public void Draw((int x, int y) pos)
+        //Prints the contents of the sketchPad string on the requested position.
+        public void Draw((int x, int y) pos)
             {
                 Console.SetCursorPosition(pos.x, pos.y);
                 int i = 1;
@@ -95,14 +93,14 @@ namespace BattleBoats
                 sketchPad = String.Empty;
             }
 
-            //README:
-            //The subroutines below are similar to each other so I will explain how they work here instead of each individually.
-            //First two lines sets the colour values for the text. If either is constant, it is set to the respective Default...ground variable.
-            //No the string is not black magic, the sequence uses ANSI escape codes add colour information to the string.
-            //Google: "ANSI escape code" to learn more about it if it looks interesting.
+        //README:
+        //The subroutines below are similar to each other so I will explain how they work here instead of each individually.
+        //First two lines sets the colour values for the text. If either is constant, it is set to the respective Default...ground variable.
+        //No the string is not black magic, the sequence uses ANSI escape codes add colour information to the string.
+        //Google: "ANSI escape code" to learn more about it if it looks interesting.
 
-            //Adds to sketchPad without line break.
-            public void Sketch(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
+        //Adds to sketchPad without line break.
+        public void Sketch(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
             {
                 ForegroundColor = ForegroundColor == FG.Constant ? this.DefaultForeground : ForegroundColor;
                 BackgroundColor = BackgroundColor == BG.Constant ? this.DefaultBackground : BackgroundColor;
@@ -110,8 +108,8 @@ namespace BattleBoats
                 sketchPad += $"\x1b[38;4;{(int)ForegroundColor}m\x1b[38;4;{(int)BackgroundColor}m{text}\x1b[0m";
             }
 
-            //Adds to sketchPad with line break.
-            public void SketchLine(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
+        //Adds to sketchPad with line break.
+        public void SketchLine(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
             {
                 ForegroundColor = ForegroundColor == FG.Constant ? this.DefaultForeground : ForegroundColor;
                 BackgroundColor = BackgroundColor == BG.Constant ? this.DefaultBackground : BackgroundColor;
@@ -119,8 +117,8 @@ namespace BattleBoats
                 sketchPad += $"\x1b[38;4;{(int)ForegroundColor}m\x1b[38;4;{(int)BackgroundColor}m{text}\x1b[0m\n";
             }
 
-            //Writes to console with line break.
-            public void WriteLine(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
+        //Writes to console with line break.
+        public void WriteLine(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
             {
                 ForegroundColor = ForegroundColor == FG.Constant ? this.DefaultForeground : ForegroundColor;
                 BackgroundColor = BackgroundColor == BG.Constant ? this.DefaultBackground : BackgroundColor;
@@ -128,15 +126,15 @@ namespace BattleBoats
                 Console.Write($"\x1b[38;4;{(int)ForegroundColor}m\x1b[38;4;{(int)BackgroundColor}m{text}\x1b[0m\n");
             }
 
-            //Writes to console without line break.
-            public void Write(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
+        //Writes to console without line break.
+        public void Write(string text, FG ForegroundColor = FG.Constant, BG BackgroundColor = BG.Constant)
             {
                 ForegroundColor = ForegroundColor == FG.Constant ? this.DefaultForeground : ForegroundColor;
                 BackgroundColor = BackgroundColor == BG.Constant ? this.DefaultBackground : BackgroundColor;
 
                 Console.Write($"\x1b[38;4;{(int)ForegroundColor}m\x1b[38;4;{(int)BackgroundColor}m{text}\x1b[0m");             
             }                      
-        }
+        
         
     }
 }

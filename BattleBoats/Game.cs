@@ -342,8 +342,8 @@ namespace BattleBoats
                             printer.Sketch($"~", Renderer.FG.Blue, Renderer.BG.BrightBlue);
                             break;
                         case Cell.Miss:
-                            printer.Sketch($")", Renderer.FG.Black, Renderer.BG.BrightBlue);
                             printer.Sketch($"(", Renderer.FG.Black, Renderer.BG.BrightBlue);
+                            printer.Sketch($")", Renderer.FG.Black, Renderer.BG.BrightBlue);
                             break;
                         case Cell.Hit:
                             printer.Sketch($">", Renderer.FG.Red, Renderer.BG.Blue);
@@ -524,7 +524,7 @@ namespace BattleBoats
         public abstract (int x, int y) ChooseSpot();
         public abstract void Display();
 
-        public Renderer.Printer printer = new();
+        public Renderer printer = new();
     }
     //Cell enum is used within the two boards to make some operations more understandable for humans (like me).
     public enum Cell
@@ -646,7 +646,7 @@ namespace BattleBoats
 
         private int turnCount = 0;
 
-        Renderer.Printer printer = new();
+        Renderer printer = new();
         Human player1 = new();
         Computer player2 = new();
 
