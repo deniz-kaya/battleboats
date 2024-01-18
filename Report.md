@@ -1,3 +1,10 @@
+Contents:
+- ![Inroduction](https://github.com/deniz-kaya/battleboats/blob/master/Report.md#introduction)
+- ![Documented Design](https://github.com/deniz-kaya/battleboats/blob/master/Report.md#documented-design)
+- Technical Solution
+- Testing
+- ![Evaluation](https://github.com/deniz-kaya/battleboats/blob/master/Report.md#evaluation)
+
 - # Introduction
 	- ## Scenario:
 	- Creating a digital version of the board game battleboats (NOT ships) using a C# console app, where the player plays against a computer.
